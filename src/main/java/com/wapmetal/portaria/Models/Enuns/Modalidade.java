@@ -1,5 +1,8 @@
 package com.wapmetal.portaria.Models.Enuns;
 
+import javax.persistence.Entity;
+
+@Entity
 public enum Modalidade {
     BANCO_DE_HORAS("Banco de Horas"),
     HORA_EXTRA("Hora Extra"),
