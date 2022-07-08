@@ -8,6 +8,7 @@ class PortariaApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("Olá mundo");
 	}
 
 }

@@ -10,25 +10,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name = "entradas_mensais")
 @NoArgsConstructor
-public class EntradasMensais implements Serializable {
+public class EntradasMensaisEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private Calendar data;
 
     @OneToMany(mappedBy = "entradaMensal")
-    private List<Entrada> entradas = new ArrayList<Entrada>();
+    private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
 
-    public EntradasMensais(Calendar data, List<Entrada> entradas) {
+    public EntradasMensaisEntity(Calendar data, List<EntradaEntity> entradas) {
         this.data = data;
         this.entradas = entradas;
     }

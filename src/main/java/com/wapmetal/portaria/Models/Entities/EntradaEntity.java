@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wapmetal.portaria.Models.Enuns.Modalidade;
@@ -17,31 +19,35 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name = "entradas")
 @NoArgsConstructor
-public class Entrada implements Serializable {
+public class EntradaEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne
-    private Funcionario funcionario;
+    private FuncionarioEntity funcionario;
 
     @ManyToOne
     @JsonIgnore
-    private EntradasMensais entradaMensal = new EntradasMensais();
+    private EntradasMensaisEntity entradaMensal = new EntradasMensaisEntity();
 
     private Calendar data;
     private Calendar entrada;
     private Calendar saida;
     private Calendar horas;
+
+    @OneToOne
     private Modalidade modalidade;
+
     private Calendar entradaValidada;
     private Calendar saidaValidada;
     private Calendar horasValidadas;
     private String observacao;
     
-    public Entrada(Funcionario funcionario, EntradasMensais entradaMensal, Calendar data, Calendar entrada,
+    public EntradaEntity(FuncionarioEntity funcionario, EntradasMensaisEntity entradaMensal, Calendar data, Calendar entrada,
             Calendar saida, Calendar horas, Modalidade modalidade, Calendar entradaValidada, Calendar saidaValidada,
             Calendar horasValidadas, String observacao) {
         this.funcionario = funcionario;
