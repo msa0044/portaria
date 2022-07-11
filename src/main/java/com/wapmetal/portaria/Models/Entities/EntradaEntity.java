@@ -8,12 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.wapmetal.portaria.Models.Enuns.Modalidade;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -39,8 +36,7 @@ public class EntradaEntity implements Serializable {
     private Calendar saida;
     private Calendar horas;
 
-    @OneToOne
-    private Modalidade modalidade;
+    private String modalidade;
 
     private Calendar entradaValidada;
     private Calendar saidaValidada;
@@ -48,7 +44,7 @@ public class EntradaEntity implements Serializable {
     private String observacao;
     
     public EntradaEntity(FuncionarioEntity funcionario, EntradasMensaisEntity entradaMensal, Calendar data, Calendar entrada,
-            Calendar saida, Calendar horas, Modalidade modalidade, Calendar entradaValidada, Calendar saidaValidada,
+            Calendar saida, Calendar horas, String modalidade, Calendar entradaValidada, Calendar saidaValidada,
             Calendar horasValidadas, String observacao) {
         this.funcionario = funcionario;
         this.entradaMensal = entradaMensal;
