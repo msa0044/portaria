@@ -10,7 +10,6 @@ public class PortariaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PortariaApplication.class, args);
-		FuncionarioEntity f = new FuncionarioEntity(12, "Marcos", "Vendass");
+		FuncionarioEntity f = new FuncionarioEntity(12, "Marcos", "Vendas");
 	}
-
 }

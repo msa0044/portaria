@@ -13,15 +13,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name = "entradas_mensais")
-@NoArgsConstructor
 public class EntradasMensaisEntity implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7430482412985070174L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -33,5 +36,8 @@ public class EntradasMensaisEntity implements Serializable {
     public EntradasMensaisEntity(Calendar data, List<EntradaEntity> entradas) {
         this.data = data;
         this.entradas = entradas;
+    }
+
+    public EntradasMensaisEntity() {
     }
 }

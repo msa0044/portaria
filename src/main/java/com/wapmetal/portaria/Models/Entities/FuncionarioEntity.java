@@ -19,10 +19,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Table(name = "funcionario")
-@NoArgsConstructor
 public class FuncionarioEntity implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2148591701000377991L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -40,4 +44,8 @@ public class FuncionarioEntity implements Serializable {
         this.nome = nome;
         this.setor = setor;
     }
+
+	public FuncionarioEntity() {
+	}
+    
 }

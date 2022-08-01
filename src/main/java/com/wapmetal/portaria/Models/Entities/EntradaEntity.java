@@ -12,50 +12,54 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name = "entradas")
-@NoArgsConstructor
 public class EntradaEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7640012596490318925L;
 
-    @ManyToOne
-    private FuncionarioEntity funcionario;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@ManyToOne
+	@JsonIgnore
+	private EntradasMensaisEntity entradaMensal = new EntradasMensaisEntity();
+	
+	private Calendar data;
 
-    @ManyToOne
-    @JsonIgnore
-    private EntradasMensaisEntity entradaMensal = new EntradasMensaisEntity();
+	@ManyToOne
+	private FuncionarioEntity funcionario = new FuncionarioEntity();
 
-    private Calendar data;
-    private Calendar entrada;
-    private Calendar saida;
-    private Calendar horas;
+	private Calendar entrada;
+	private Calendar saida;
+	private Calendar horas;
 
-    private String modalidade;
+	private String modalidade;
 
-    private Calendar entradaValidada;
-    private Calendar saidaValidada;
-    private Calendar horasValidadas;
-    private String observacao;
-    
-    public EntradaEntity(FuncionarioEntity funcionario, EntradasMensaisEntity entradaMensal, Calendar data, Calendar entrada,
-            Calendar saida, Calendar horas, String modalidade, Calendar entradaValidada, Calendar saidaValidada,
-            Calendar horasValidadas, String observacao) {
-        this.funcionario = funcionario;
-        this.entradaMensal = entradaMensal;
-        this.data = data;
-        this.entrada = entrada;
-        this.saida = saida;
-        this.horas = horas;
-        this.modalidade = modalidade;
-        this.entradaValidada = entradaValidada;
-        this.saidaValidada = saidaValidada;
-        this.horasValidadas = horasValidadas;
-        this.observacao = observacao;
-    }
+	private Calendar entradaValidada;
+	private Calendar saidaValidada;
+	private Calendar horasValidadas;
+	private String observacao;
+
+	public EntradaEntity(FuncionarioEntity funcionario, EntradasMensaisEntity entradaMensal, Calendar data,
+			Calendar entrada, Calendar saida, Calendar horas, String modalidade, Calendar entradaValidada,
+			Calendar saidaValidada, Calendar horasValidadas, String observacao) {
+		this.funcionario = funcionario;
+		this.entradaMensal = entradaMensal;
+		this.data = data;
+		this.entrada = entrada;
+		this.saida = saida;
+		this.horas = horas;
+		this.modalidade = modalidade;
+		this.entradaValidada = entradaValidada;
+		this.saidaValidada = saidaValidada;
+		this.horasValidadas = horasValidadas;
+		this.observacao = observacao;
+	}
 }
