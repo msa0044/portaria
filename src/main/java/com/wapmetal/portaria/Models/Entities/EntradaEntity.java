@@ -18,9 +18,6 @@ import lombok.Data;
 @Table(name = "entradas")
 public class EntradaEntity implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7640012596490318925L;
 
 	@Id
@@ -29,7 +26,7 @@ public class EntradaEntity implements Serializable {
 	
 	@ManyToOne
 	@JsonIgnore
-	private EntradasMensaisEntity entradaMensal = new EntradasMensaisEntity();
+	private EntradaMensalEntity entradaMensal = new EntradaMensalEntity();
 	
 	private Calendar data;
 
@@ -47,11 +44,10 @@ public class EntradaEntity implements Serializable {
 	private Calendar horasValidadas;
 	private String observacao;
 
-	public EntradaEntity(FuncionarioEntity funcionario, EntradasMensaisEntity entradaMensal, Calendar data,
+	public EntradaEntity(FuncionarioEntity funcionario, Calendar data,
 			Calendar entrada, Calendar saida, Calendar horas, String modalidade, Calendar entradaValidada,
 			Calendar saidaValidada, Calendar horasValidadas, String observacao) {
 		this.funcionario = funcionario;
-		this.entradaMensal = entradaMensal;
 		this.data = data;
 		this.entrada = entrada;
 		this.saida = saida;

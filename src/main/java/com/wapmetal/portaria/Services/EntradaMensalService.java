@@ -3,29 +3,29 @@ package com.wapmetal.portaria.Services;
 import java.util.List;
 import java.util.Optional;
 
-import com.wapmetal.portaria.Models.Entities.FuncionarioEntity;
-import com.wapmetal.portaria.Repositories.FuncionarioRepository;
+import com.wapmetal.portaria.Models.Entities.EntradaMensalEntity;
+import com.wapmetal.portaria.Repositories.EntradaMensalRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FuncionarioService {
+public class EntradaMensalService {
 
 	@Autowired
-	private FuncionarioRepository repository;
+	private EntradaMensalRepository repository;
 
-	public FuncionarioEntity getOne(Long id) {
-		Optional<FuncionarioEntity> entity = repository.findById(id);
+	public EntradaMensalEntity getOne(Long id) {
+		Optional<EntradaMensalEntity> entity = repository.findById(id);
 		System.out.println(entity.get().toString());
 		return entity.get();
 	}
 
-	public List<FuncionarioEntity> getAll() {
+	public List<EntradaMensalEntity> getAll() {
 		return repository.findAll();
 	}
 
-	public FuncionarioEntity save(FuncionarioEntity entity) {
+	public EntradaMensalEntity save(EntradaMensalEntity entity) {
 		return repository.save(entity);
 	}
 

@@ -14,16 +14,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name = "funcionario")
 public class FuncionarioEntity implements Serializable {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 2148591701000377991L;
 
 	@Id
@@ -47,5 +43,12 @@ public class FuncionarioEntity implements Serializable {
 
 	public FuncionarioEntity() {
 	}
+
+	@Override
+	public String toString() {
+		return "FuncionarioEntity [id=" + id + ", cracha=" + cracha + ", nome=" + nome
+				+ ", setor=" + setor + "]";
+	}
     
+	
 }

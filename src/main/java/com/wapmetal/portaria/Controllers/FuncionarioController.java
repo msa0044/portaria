@@ -39,6 +39,6 @@ public class FuncionarioController {
 
     @DeleteMapping(value = "delete/{id}")
     public ResponseEntity<Object> delete(@PathVariable Long id){
-    return ResponseEntity.noContent().build();
+    	return ResponseEntity.noContent().build();
     }
 }

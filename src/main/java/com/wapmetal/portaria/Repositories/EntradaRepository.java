@@ -1,10 +1,10 @@
 package com.wapmetal.portaria.Repositories;
 
-import com.wapmetal.portaria.Models.Entities.FuncionarioEntity;
+import com.wapmetal.portaria.Models.Entities.EntradaEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Long> {
+public interface EntradaRepository extends JpaRepository<EntradaEntity, Long> {
 }
