@@ -22,20 +22,17 @@ public class FuncionarioEntity implements Serializable {
 
 	private static final long serialVersionUID = 2148591701000377991L;
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @OneToMany(mappedBy = "funcionario")
     @JsonIgnore
     private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
 
-    private int cracha;
+    @Id
+    private Long cracha;
     private String nome;
 
     private String setor;
 
-    public FuncionarioEntity(int cracha, String nome, String setor) {
+    public FuncionarioEntity(Long cracha, String nome, String setor) {
         this.cracha = cracha;
         this.nome = nome;
         this.setor = setor;
@@ -46,7 +43,7 @@ public class FuncionarioEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FuncionarioEntity [id=" + id + ", cracha=" + cracha + ", nome=" + nome
+		return "FuncionarioEntity [cracha=" + cracha + ", nome=" + nome
 				+ ", setor=" + setor + "]";
 	}
     

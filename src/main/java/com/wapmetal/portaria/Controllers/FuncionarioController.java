@@ -22,9 +22,19 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService service;
 
-    @GetMapping(value = "/get/{id}")
-    public ResponseEntity<FuncionarioEntity> getOne(@PathVariable Long id) {
-        return ResponseEntity.ok().body(service.getOne(id));
+    @GetMapping(value = "/get/id/{id}")
+    public ResponseEntity<FuncionarioEntity> getOneById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(service.getById(id));
+    }
+    
+    @GetMapping(value = "/get/cracha/{cracha}")
+    public ResponseEntity<FuncionarioEntity> getOneByCracha(@PathVariable Long cracha) {
+        return ResponseEntity.ok().body(service.getOneByCracha(cracha));
+    }
+
+    @GetMapping(value = "/get/cracha/all")
+    public ResponseEntity<List<FuncionarioEntity>> getAllByCracha() {
+        return ResponseEntity.ok().body(service.getAllByCracha());
     }
 
     @GetMapping(value = "/get/all")
