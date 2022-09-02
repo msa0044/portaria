@@ -14,26 +14,29 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
+import lombok.Getter;
 
 @Entity
 @Data
+@Getter
 @Table(name = "funcionario")
 public class FuncionarioEntity implements Serializable {
 
 	private static final long serialVersionUID = 2148591701000377991L;
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long cracha;
+
     @OneToMany(mappedBy = "funcionario")
     @JsonIgnore
     private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
 
-    @Id
-    private Long cracha;
     private String nome;
 
     private String setor;
 
-    public FuncionarioEntity(Long cracha, String nome, String setor) {
-        this.cracha = cracha;
+    public FuncionarioEntity(String nome, String setor) {
         this.nome = nome;
         this.setor = setor;
     }

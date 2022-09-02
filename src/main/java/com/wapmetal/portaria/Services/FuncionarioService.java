@@ -14,43 +14,18 @@ public class FuncionarioService {
 
 	@Autowired
 	private FuncionarioRepository repository;
-	
-	/*
-	public List<FuncionarioEntity> findOneByCracha(Long cracha);
-	public List<FuncionarioEntity> findAllByCracha(Long cracha);
-	public List<FuncionarioEntity> findOneByNome(String nome);
-	public List<FuncionarioEntity> findAllByNome(String nome);
-	public List<FuncionarioEntity> findOneBySetor(String setor);
-	public List<FuncionarioEntity> findAllBySetor(String setor);
-	*/
 
-	public FuncionarioEntity getOneByCracha(Long cracha) {
-		return repository.findOneByCracha(cracha);
-	}
-
-	public FuncionarioEntity getOneByNome(String nome) {
-		return repository.findOneByNome(nome);
-	}
-	
-	public FuncionarioEntity getOneBySetor(String setor) {
-		return repository.findOneBySetor(setor);
-	}
-
-	public List<FuncionarioEntity> getAllByCracha() {
-		return repository.findAllByCracha();
-	}
-
-	public List<FuncionarioEntity> getAllByNome() {
-		return repository.findAllByNome();
-	}
-
-	public List<FuncionarioEntity> getAllBySetor() {
-		return repository.findAllByCracha();
-	}
-	
 	public FuncionarioEntity getById(Long id) {
 		Optional<FuncionarioEntity> entity = repository.findById(id);
 		return entity.get();
+	}
+	
+	public List<FuncionarioEntity> getByNome(String nome) {
+		return repository.findByNome(nome);
+	}
+	
+	public List<FuncionarioEntity> getBySetor(String setor) {
+		return repository.findBySetor(setor);
 	}
 
 	public List<FuncionarioEntity> getAll() {

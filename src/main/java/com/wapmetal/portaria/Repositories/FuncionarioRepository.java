@@ -8,11 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Long> {  
-	public FuncionarioEntity findOneByCracha(Long cracha);
-	public FuncionarioEntity findOneByNome(String nome);
-	public FuncionarioEntity findOneBySetor(String setor);
-	public List<FuncionarioEntity> findAllByCracha();
-	public List<FuncionarioEntity> findAllByNome();
-	public List<FuncionarioEntity> findAllBySetor();
+public interface FuncionarioRepository extends JpaRepository<FuncionarioEntity, Long> {
+	public List<FuncionarioEntity> findByNome(String nome);
+	public List<FuncionarioEntity> findBySetor(String setor);
 }
