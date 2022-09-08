@@ -25,7 +25,6 @@ public class FuncionarioEntity implements Serializable {
 	private static final long serialVersionUID = 2148591701000377991L;
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long cracha;
 
     @OneToMany(mappedBy = "funcionario")
@@ -36,7 +35,8 @@ public class FuncionarioEntity implements Serializable {
 
     private String setor;
 
-    public FuncionarioEntity(String nome, String setor) {
+    public FuncionarioEntity(Long cracha,String nome, String setor) {
+    	this.cracha = cracha;
         this.nome = nome;
         this.setor = setor;
     }

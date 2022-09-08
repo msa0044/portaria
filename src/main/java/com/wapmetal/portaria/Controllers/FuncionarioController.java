@@ -25,40 +25,33 @@ public class FuncionarioController {
 
     //pegar um
     @GetMapping(value = "/get/id/{id}")
-    public ResponseEntity<FuncionarioEntity> getOneById(@PathVariable Long id) {
+    public ResponseEntity<FuncionarioEntity> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.getById(id));
     }
-
-    //pegar por nome
-    @GetMapping(value = "/get/nome")
-    public ResponseEntity<List<FuncionarioEntity>> getByNome(@RequestParam (value = "nome", defaultValue = "") String txt) {
-    	txt = Decoder.convert(txt);
-        return ResponseEntity.ok().body(service.getByNome(txt));
-    }
-
-    //pegar por setor
-    @GetMapping(value = "/get/setor")
-    public ResponseEntity<List<FuncionarioEntity>> getBySetor(@RequestParam (value = "setor", defaultValue = "") String txt) {
-    	txt = Decoder.convert(txt);
-        return ResponseEntity.ok().body(service.getBySetor(txt));
-    }
-
+    
     //pegar todos
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<FuncionarioEntity>> getAll() {
-    	System.out.println("----------------------->"+service.getAll()+"<---------------------------");
         return ResponseEntity.ok().body(service.getAll());
     }
 
     //salvar
-    @PostMapping(consumes = "application/json")
-    public ResponseEntity<FuncionarioEntity> save(@RequestBody FuncionarioEntity entity) {
+    @PostMapping(value = "txt",consumes = "application/x-www-form-urlencoded")
+    public ResponseEntity<FuncionarioEntity> saveTxt(FuncionarioEntity entity) {
         return ResponseEntity.ok().body(service.save(entity));
     }
+    
+  //salvar
+    @PostMapping(value = "json",consumes = "application/json")
+    public ResponseEntity<FuncionarioEntity> saveJson(@RequestBody FuncionarioEntity entity) {
+        return ResponseEntity.ok().body(service.save(entity));
+    }
+
 
     //excluir
     @DeleteMapping(value = "delete/{id}")
     public ResponseEntity<Object> delete(@PathVariable Long id){
+    	service.delete(id);
     	return ResponseEntity.noContent().build();
     }
 }

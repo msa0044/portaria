@@ -19,14 +19,6 @@ public class FuncionarioService {
 		Optional<FuncionarioEntity> entity = repository.findById(id);
 		return entity.get();
 	}
-	
-	public List<FuncionarioEntity> getByNome(String nome) {
-		return repository.findByNome(nome);
-	}
-	
-	public List<FuncionarioEntity> getBySetor(String setor) {
-		return repository.findBySetor(setor);
-	}
 
 	public List<FuncionarioEntity> getAll() {
 		return repository.findAll();

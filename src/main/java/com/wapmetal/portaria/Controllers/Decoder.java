@@ -8,7 +8,7 @@ public class Decoder {
 		try {
 			return URLDecoder.decode(txt, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			return "null";
+			return "";
 		}
 	}
 }
