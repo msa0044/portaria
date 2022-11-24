@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wapmetal.portaria.Models.Entities.FuncionarioEntity;
+import com.wapmetal.portaria.Models.FuncionarioEntity;
 import com.wapmetal.portaria.Services.FuncionarioService;
 
 @RestController
@@ -24,7 +23,7 @@ public class FuncionarioController {
     private FuncionarioService service;
 
     //pegar um
-    @GetMapping(value = "/get/id/{id}")
+    @GetMapping(value = "/get/{id}")
     public ResponseEntity<FuncionarioEntity> getById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.getById(id));
     }
@@ -36,7 +35,7 @@ public class FuncionarioController {
     }
 
     //salvar
-    @PostMapping(value = "txt",consumes = "application/x-www-form-urlencoded")
+    @PostMapping(value = "txt", consumes = "application/x-www-form-urlencoded")
     public ResponseEntity<FuncionarioEntity> saveTxt(FuncionarioEntity entity) {
         return ResponseEntity.ok().body(service.save(entity));
     }

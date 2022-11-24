@@ -1,4 +1,4 @@
-package com.wapmetal.portaria.Models.Entities;
+package com.wapmetal.portaria.Models;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -12,9 +12,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
 
 @Entity
 @Data
+@Getter
 @Table(name = "entradas")
 public class EntradaEntity implements Serializable {
 
@@ -33,9 +35,9 @@ public class EntradaEntity implements Serializable {
 	@ManyToOne
 	private FuncionarioEntity funcionario = new FuncionarioEntity();
 
-	private Calendar entrada;
-	private Calendar saida;
-	private Calendar horas;
+	private Calendar entradaEsperada;
+	private Calendar saidaEsperada;
+	private Calendar horasEsperadas;
 
 	private String modalidade;
 
@@ -43,19 +45,19 @@ public class EntradaEntity implements Serializable {
 	private Calendar saidaValidada;
 	private Calendar horasValidadas;
 	private String observacao;
-
-	public EntradaEntity(FuncionarioEntity funcionario, Calendar data,
-			Calendar entrada, Calendar saida, Calendar horas, String modalidade, Calendar entradaValidada,
-			Calendar saidaValidada, Calendar horasValidadas, String observacao) {
+	
+	public EntradaEntity(FuncionarioEntity funcionario, Calendar data, Calendar entrada, Calendar saida, String modalidade) {
 		this.funcionario = funcionario;
 		this.data = data;
-		this.entrada = entrada;
-		this.saida = saida;
-		this.horas = horas;
+		this.entradaEsperada = entrada;
+		this.saidaEsperada = saida;
 		this.modalidade = modalidade;
+	}
+
+	public void validar(Calendar entradaValidada,
+			Calendar saidaValidada, String observacao) {
 		this.entradaValidada = entradaValidada;
 		this.saidaValidada = saidaValidada;
-		this.horasValidadas = horasValidadas;
 		this.observacao = observacao;
 	}
 }

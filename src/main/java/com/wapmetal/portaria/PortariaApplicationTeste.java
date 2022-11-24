@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.wapmetal.portaria.Models.Entities.FuncionarioEntity;
+import com.wapmetal.portaria.Models.FuncionarioEntity;
 import com.wapmetal.portaria.Services.FuncionarioService;
 
 @Configuration
