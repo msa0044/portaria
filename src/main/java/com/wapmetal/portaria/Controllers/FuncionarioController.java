@@ -33,15 +33,9 @@ public class FuncionarioController {
     public ResponseEntity<List<FuncionarioEntity>> getAll() {
         return ResponseEntity.ok().body(service.getAll());
     }
-
-    //salvar
-    @PostMapping(value = "txt", consumes = "application/x-www-form-urlencoded")
-    public ResponseEntity<FuncionarioEntity> saveTxt(FuncionarioEntity entity) {
-        return ResponseEntity.ok().body(service.save(entity));
-    }
     
   //salvar
-    @PostMapping(value = "json",consumes = "application/json")
+    @PostMapping(consumes = "application/json")
     public ResponseEntity<FuncionarioEntity> saveJson(@RequestBody FuncionarioEntity entity) {
         return ResponseEntity.ok().body(service.save(entity));
     }
