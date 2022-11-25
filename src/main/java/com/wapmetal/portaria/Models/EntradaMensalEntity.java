@@ -12,16 +12,20 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
-@Table(name = "entradas_mensais")
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor @NoArgsConstructor
+@Table(name = "entrada_mensal")
 public class EntradaMensalEntity implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7430482412985070174L;
 
 	@Id
@@ -30,18 +34,6 @@ public class EntradaMensalEntity implements Serializable {
 
 	private Calendar mes;
 
-	@OneToMany(mappedBy = "entradaMensal")
+	@OneToMany
 	private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
-
-	public EntradaMensalEntity(Calendar mes, List<EntradaEntity> entradas) {
-		this.mes = mes;
-		this.entradas = entradas;
-	}
-
-	public EntradaMensalEntity() {
-	}
-	
-	public void addEntrada(EntradaEntity entity) {
-		
-	}
 }

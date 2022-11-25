@@ -1,22 +1,22 @@
 package com.wapmetal.portaria.Models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
-@Getter
+@ToString
+@AllArgsConstructor @NoArgsConstructor
+@EqualsAndHashCode
 @Table(name = "funcionario")
 public class FuncionarioEntity implements Serializable {
 
@@ -24,29 +24,6 @@ public class FuncionarioEntity implements Serializable {
 
     @Id
     private Long cracha;
-
-    @OneToMany(mappedBy = "funcionario")
-    @JsonIgnore
-    private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
-
     private String nome;
-
     private String setor;
-
-    public FuncionarioEntity(Long cracha,String nome, String setor) {
-    	this.cracha = cracha;
-        this.nome = nome;
-        this.setor = setor;
-    }
-
-	public FuncionarioEntity() {
-	}
-
-	@Override
-	public String toString() {
-		return "FuncionarioEntity [cracha=" + cracha + ", nome=" + nome
-				+ ", setor=" + setor + "]";
-	}
-    
-	
 }

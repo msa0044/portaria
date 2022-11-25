@@ -15,9 +15,8 @@ public class EntradaService {
 	@Autowired
 	private EntradaRepository repository;
 
-	public EntradaEntity getOne(Long id) {
+	public EntradaEntity getById(Long id) {
 		Optional<EntradaEntity> entity = repository.findById(id);
-		System.out.println(entity.get().toString());
 		return entity.get();
 	}
 

@@ -15,9 +15,8 @@ public class EntradaMensalService {
 	@Autowired
 	private EntradaMensalRepository repository;
 
-	public EntradaMensalEntity getOne(Long id) {
+	public EntradaMensalEntity getById(Long id) {
 		Optional<EntradaMensalEntity> entity = repository.findById(id);
-		System.out.println(entity.get().toString());
 		return entity.get();
 	}
 

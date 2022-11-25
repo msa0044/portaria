@@ -3,6 +3,7 @@ package com.wapmetal.portaria.Models;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,14 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
-@Getter
-@Table(name = "entradas")
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor @NoArgsConstructor
+@Table(name = "entrada")
 public class EntradaEntity implements Serializable {
 
 	private static final long serialVersionUID = 7640012596490318925L;
@@ -25,39 +30,23 @@ public class EntradaEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@ManyToOne
-	@JsonIgnore
-	private EntradaMensalEntity entradaMensal = new EntradaMensalEntity();
-	
+	private String modalidade;
 	private Calendar data;
 
 	@ManyToOne
 	private FuncionarioEntity funcionario = new FuncionarioEntity();
 
-	private Calendar entradaEsperada;
-	private Calendar saidaEsperada;
-	private Calendar horasEsperadas;
-
-	private String modalidade;
-
-	private Calendar entradaValidada;
-	private Calendar saidaValidada;
-	private Calendar horasValidadas;
+	@Column (name = "entrada_prevista")
+	private Calendar entradaPrevista;
+	@Column (name = "saida_prevista")
+	private Calendar saidaPrevista;
 	private String observacao;
-	
-	public EntradaEntity(FuncionarioEntity funcionario, Calendar data, Calendar entrada, Calendar saida, String modalidade) {
-		this.funcionario = funcionario;
-		this.data = data;
-		this.entradaEsperada = entrada;
-		this.saidaEsperada = saida;
-		this.modalidade = modalidade;
-	}
-
-	public void validar(Calendar entradaValidada,
-			Calendar saidaValidada, String observacao) {
-		this.entradaValidada = entradaValidada;
-		this.saidaValidada = saidaValidada;
-		this.observacao = observacao;
-	}
+	@Column (name = "horas_previstas")
+	private Calendar horasPrevistas;
+	@Column (name = "entrada_validada")
+	private Calendar entradaValidada;
+	@Column (name = "saida_validada")
+	private Calendar saidaValidada;
+	@Column (name = "horas_validadas")
+	private Calendar horasValidadas;
 }
