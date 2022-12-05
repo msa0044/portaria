@@ -1,8 +1,9 @@
 package com.wapmetal.portaria.Models;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,32 +22,48 @@ import lombok.ToString;
 @Data
 @ToString
 @EqualsAndHashCode
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "entrada")
 public class EntradaEntity implements Serializable {
 
+	
 	private static final long serialVersionUID = 7640012596490318925L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String modalidade;
-	private Calendar data;
-
-	@ManyToOne
+	
+	@ManyToOne //(cascade = CascadeType.PERSIST)
 	private FuncionarioEntity funcionario = new FuncionarioEntity();
 
+	private String modalidade;
+	
+	private Date data;
+
 	@Column (name = "entrada_prevista")
-	private Calendar entradaPrevista;
+	private Date entradaPrevista;
 	@Column (name = "saida_prevista")
-	private Calendar saidaPrevista;
+	private Date saidaPrevista;
+
 	private String observacao;
+
 	@Column (name = "horas_previstas")
-	private Calendar horasPrevistas;
+	private Date horasPrevistas;
 	@Column (name = "entrada_validada")
-	private Calendar entradaValidada;
+	private Date entradaValidada;
 	@Column (name = "saida_validada")
-	private Calendar saidaValidada;
+	private Date saidaValidada;
 	@Column (name = "horas_validadas")
-	private Calendar horasValidadas;
+	private Date horasValidadas;
+
+	public EntradaEntity(FuncionarioEntity funcionario, String modalidade, Date data, Date entradaPrevista,
+			Date saidaPrevista, String observacao) {
+		this.funcionario = funcionario;
+		this.modalidade = modalidade;
+		this.data = data;
+		this.entradaPrevista = entradaPrevista;
+		this.saidaPrevista = saidaPrevista;
+		this.observacao = observacao;
+	}
 }
