@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wapmetal.portaria.Models.FuncionarioEntity;
+import com.wapmetal.portaria.Models.Entities.FuncionarioEntity;
 import com.wapmetal.portaria.Repositories.FuncionarioRepository;
 
 @Service

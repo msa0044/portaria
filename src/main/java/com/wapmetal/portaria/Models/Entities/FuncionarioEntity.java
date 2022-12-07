@@ -1,4 +1,4 @@
-package com.wapmetal.portaria.Models;
+package com.wapmetal.portaria.Models.Entities;
 
 import java.io.Serializable;
 

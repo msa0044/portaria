@@ -1,4 +1,4 @@
-package com.wapmetal.portaria.Models;
+package com.wapmetal.portaria.Models.Entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import lombok.ToString;
 @Table(name = "entrada_mensal")
 public class EntradaMensalEntity implements Serializable {
 
-	private static final long serialVersionUID = -7430482412985070174L;
+	// private static final long serialVersionUID = -7430482412985070174L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +35,5 @@ public class EntradaMensalEntity implements Serializable {
 	private Calendar mes;
 
 	@OneToMany
-	private List<EntradaEntity> entradas = new ArrayList<EntradaEntity>();
+	private List<EntradaEntity> entrada = new ArrayList<EntradaEntity>();
 }

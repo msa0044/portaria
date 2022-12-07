@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wapmetal.portaria.Models.FuncionarioEntity;
+import com.wapmetal.portaria.Models.Entities.FuncionarioEntity;
 import com.wapmetal.portaria.Services.FuncionarioService;
 
 @RestController

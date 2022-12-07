@@ -1,5 +1,6 @@
 package com.wapmetal.portaria.Controllers;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wapmetal.portaria.Models.EntradaEntity;
+import com.wapmetal.portaria.Models.DTOs.EntradaDTO;
+import com.wapmetal.portaria.Models.Entities.EntradaEntity;
 import com.wapmetal.portaria.Services.EntradaService;
 
 @RestController
@@ -36,9 +38,10 @@ public class EntradaController {
     }
     
     //salvar
-    @PostMapping(value = "json",consumes = "application/json")
-    public ResponseEntity<EntradaEntity> saveJson(@RequestBody EntradaEntity entity) {
-        return new ResponseEntity<EntradaEntity>(service.save(entity), HttpStatus.CREATED);
+    @PostMapping(consumes = "application/json")
+    public ResponseEntity<EntradaEntity> saveJson(@RequestBody EntradaDTO entity) throws ParseException {
+        System.out.println(entity.toString());
+        return new ResponseEntity<EntradaEntity>(service.save(entity.gerarEntradaEntity()), HttpStatus.CREATED);
     }
 
     //excluir
