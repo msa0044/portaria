@@ -2,7 +2,6 @@ package com.wapmetal.portaria.Models.DTOs;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.zip.DataFormatException;
 
 import com.wapmetal.portaria.Models.Entities.EntradaEntity;
 import com.wapmetal.portaria.Models.Entities.FuncionarioEntity;
