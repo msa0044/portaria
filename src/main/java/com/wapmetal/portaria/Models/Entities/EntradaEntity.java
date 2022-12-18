@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "entrada")
+@JsonPropertyOrder({"id","data","cracha","funcionario","modalidade","entradaPrevista","saidaPrevista",
+"entradaValidada","saidaValidada", "horasValidadas"})
 public class EntradaEntity implements Serializable {
 
 	
@@ -49,15 +52,12 @@ public class EntradaEntity implements Serializable {
 	private Date saidaPrevista;
 
 	private String observacao;
-
-	@Column (name = "horas_previstas")
-	private Date horasPrevistas;
 	@Column (name = "entrada_validada")
 	private Date entradaValidada;
 	@Column (name = "saida_validada")
 	private Date saidaValidada;
-	@Column (name = "horas_validadas")
-	private Date horasValidadas;
+	@Column (name = "horas")
+	private Date horas;
 
 	public EntradaEntity(FuncionarioEntity funcionario, String modalidade, Date data, Date entradaPrevista,
 			Date saidaPrevista, String observacao) {

@@ -20,10 +20,5 @@ public class PortariaApplicationTeste implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		FuncionarioEntity f = new FuncionarioEntity(1L, "Marcos", "Vendas");
-		fs.save(f);
-		EntradaEntity e = new EntradaEntity();
-		e.setFuncionario(f);
-		es.save(e);
 	}
 }
