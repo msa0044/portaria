@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wapmetal.portaria.Models.DTOs.EntradaDTO;
 import com.wapmetal.portaria.Models.Entities.EntradaEntity;
 import com.wapmetal.portaria.Services.EntradaService;
+import com.wapmetal.portaria.Services.FuncionarioService;
 
 @RestController
 @RequestMapping(value = "/entrada")
@@ -24,6 +25,9 @@ public class EntradaController {
 
     @Autowired
     private EntradaService service;
+
+    @Autowired
+    private FuncionarioService fService;
 
     //pegar um
     @GetMapping(value = "/get/{id}")
@@ -40,7 +44,7 @@ public class EntradaController {
     //salvar
     @PostMapping(consumes = "application/json")
     public ResponseEntity<EntradaEntity> saveJson(@RequestBody EntradaDTO entity) throws ParseException {
-        System.out.println(entity.toString());
+        fService.save(entity.getFuncionario());
         return new ResponseEntity<EntradaEntity>(service.save(entity.gerarEntradaEntity()), HttpStatus.CREATED);
     }
 

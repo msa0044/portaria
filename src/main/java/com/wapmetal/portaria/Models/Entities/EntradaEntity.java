@@ -11,9 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,36 +24,32 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "entrada")
-@JsonPropertyOrder({"id","data","cracha","funcionario","modalidade","entradaPrevista","saidaPrevista",
-"entradaValidada","saidaValidada", "horasValidadas"})
 public class EntradaEntity implements Serializable {
 
-	
 	private static final long serialVersionUID = 7640012596490318925L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@JsonProperty("funcionario")
+
 	@ManyToOne
 	private FuncionarioEntity funcionario = new FuncionarioEntity();
 
 	private String modalidade;
-	
+
 	private Date data;
 
-	@Column (name = "entrada_prevista")
+	@Column(name = "entrada_prevista")
 	private Date entradaPrevista;
-	@Column (name = "saida_prevista")
+	@Column(name = "saida_prevista")
 	private Date saidaPrevista;
 
 	private String observacao;
-	@Column (name = "entrada_validada")
+	@Column(name = "entrada_validada")
 	private Date entradaValidada;
-	@Column (name = "saida_validada")
+	@Column(name = "saida_validada")
 	private Date saidaValidada;
-	@Column (name = "horas")
+	@Column(name = "horas")
 	private Date horas;
 
 	public EntradaEntity(FuncionarioEntity funcionario, String modalidade, Date data, Date entradaPrevista,
